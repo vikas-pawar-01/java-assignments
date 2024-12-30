@@ -1,4 +1,4 @@
-package dev.lpa;
+
 
 public class Furniture extends ProductForSale {
 

@@ -1,4 +1,4 @@
-package dev.lpa;
+
 
 public record Course(String courseCode, String title, int lectureCount) {
 

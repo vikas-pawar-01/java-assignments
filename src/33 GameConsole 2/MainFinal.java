@@ -1,4 +1,4 @@
-package dev.lpa;
+
 
 import dev.lpa.game.GameConsole;
 import dev.lpa.pirate.PirateGame;

@@ -1,4 +1,4 @@
-package dev.lpa;
+
 
 public class ArtObject extends ProductForSale {
 

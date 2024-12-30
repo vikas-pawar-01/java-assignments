@@ -1,4 +1,4 @@
-package dev.lpa;
+
 
 enum Geometry {LINE, POINT, POLYGON}
 

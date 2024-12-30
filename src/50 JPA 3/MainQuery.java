@@ -1,4 +1,4 @@
-package dev.lpa;
+
 
 import dev.lpa.music.Artist;
 import jakarta.persistence.EntityManager;

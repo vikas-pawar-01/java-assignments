@@ -1,4 +1,4 @@
-package dev.lpa;
+
 
 class OddThread extends Thread {
 

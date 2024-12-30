@@ -1,4 +1,4 @@
-package dev.lpa;
+
 
 enum UsageType {ENTERTAINMENT, GOVERNMENT, RESIDENTIAL, SPORTS}
 

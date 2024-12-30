@@ -1,4 +1,4 @@
-package dev.lpa;
+
 
 import dev.lpa.music.Album;
 import dev.lpa.music.Artist;
