@@ -1,4 +1,4 @@
-package dev.lpa.sealed;
+
 
 public sealed class SealedKid extends SpecialAbstractClass {
 

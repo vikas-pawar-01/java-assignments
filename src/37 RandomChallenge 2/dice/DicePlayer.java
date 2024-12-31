@@ -1,4 +1,4 @@
-package dev.lpa.dice;
+
 
 import dev.lpa.game.GameConsole;
 import dev.lpa.game.Player;

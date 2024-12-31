@@ -1,4 +1,4 @@
-package dev.lpa.music;
+
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

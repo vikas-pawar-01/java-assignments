@@ -1,4 +1,4 @@
-package dev.lpa.dice;
+
 
 import dev.lpa.game.Game;
 import dev.lpa.game.GameAction;

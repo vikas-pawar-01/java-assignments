@@ -1,4 +1,4 @@
-package dev.lpa.pirate;
+
 
 public final class Soldier extends Combatant {
 

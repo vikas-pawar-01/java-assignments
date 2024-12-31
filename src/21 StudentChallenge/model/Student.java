@@ -1,4 +1,4 @@
-package dev.lpa.model;
+
 
 import dev.lpa.util.QueryItem;
 

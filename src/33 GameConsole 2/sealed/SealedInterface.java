@@ -1,4 +1,4 @@
-package dev.lpa.sealed;
+
 
 import java.util.function.Predicate;
 
