@@ -1,6 +1,6 @@
 
 
-import dev.lpa.music.Artist;
+
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Persistence;
 

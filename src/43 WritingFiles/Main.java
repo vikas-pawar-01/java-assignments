@@ -1,7 +1,7 @@
 
 
-import dev.lpa.student.Course;
-import dev.lpa.student.Student;
+
+
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;

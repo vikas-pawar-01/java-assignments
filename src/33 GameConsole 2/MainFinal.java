@@ -1,7 +1,7 @@
 
 
-import dev.lpa.game.GameConsole;
-import dev.lpa.pirate.PirateGame;
+
+
 
 //class SpecialGameConsole<T extends Game<? extends Player>>
 //        extends GameConsole<Game<? extends Player>> {

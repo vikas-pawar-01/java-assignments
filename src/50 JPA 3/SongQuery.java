@@ -1,8 +1,8 @@
 
 
-import dev.lpa.music.Album;
-import dev.lpa.music.Artist;
-import dev.lpa.music.Song;
+
+
+
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
