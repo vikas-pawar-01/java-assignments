@@ -39,10 +39,13 @@ ParallelStream may provide better performance for CPU-intensive tasks but can in
 Answer:
 Predicate<T>: Represents a condition (test method) that returns a boolean.
 Example: Predicate<String> isEmpty = String::isEmpty;
+
 Function<T, R>: Maps an input to an output (apply method).
 Example: Function<Integer, String> toString = String::valueOf;
+
 Consumer<T>: Consumes an input without returning a result (accept method).
 Example: Consumer<String> print = System.out::println;
+
 Design and Best Practices
 ## Q10: How do you handle circular dependencies in Spring?
 Answer:
@@ -112,19 +115,23 @@ Answer:
 Method references are a shorthand for lambda expressions that refer to a method directly.
 Example:
 java
-Copy code
+
 List<String> names = Arrays.asList("Alice", "Bob", "Charlie");
-names.forEach(System.out::println); // Method reference
+
+names.forEach(System.out::println);
+ // Method reference
 Design and Patterns
 ## Q24: How do you implement a Singleton pattern in Java?
 Answer:
 java
-Copy code
+
 public class Singleton {
 private static final Singleton INSTANCE = new Singleton();
+
 private Singleton() {}
 public static Singleton getInstance() {
 return INSTANCE;
+
 }
 }
 Best Practice: Use enum for thread-safe and serialization-safe Singleton.
@@ -243,19 +250,22 @@ This ensures security, thread-safety, and consistent behavior when strings are u
 ## Q46: Explain the double-checked locking pattern in Singleton.
 Answer:
 java
-Copy code
+
 public class Singleton {
 private static volatile Singleton instance;
+
 private Singleton() {}
 public static Singleton getInstance() {
 if (instance == null) {
 synchronized (Singleton.class) {
 if (instance == null) {
 instance = new Singleton();
+
 }
 }
 }
 return instance;
+
 }
 }
 The volatile keyword ensures visibility, and the outer and inner if checks avoid redundant synchronization.
@@ -356,14 +366,19 @@ Configure SessionFactory as a bean in Spring.
 Use @Transactional for transaction management.
 Example configuration:
 java
-Copy code
+
 @Bean
 public LocalSessionFactoryBean sessionFactory() {
 LocalSessionFactoryBean factoryBean = new LocalSessionFactoryBean();
+
 factoryBean.setDataSource(dataSource());
+
 factoryBean.setPackagesToScan("com.example.models");
+
 factoryBean.setHibernateProperties(hibernateProperties());
+
 return factoryBean;
+
 }
 Advanced Questions
 ## Q17: What is the N+1 problem in Hibernate, and how do you solve it?
@@ -386,7 +401,7 @@ Hibernate supports First-Level Cache (session-specific, enabled by default) and 
 Configure caching providers like Ehcache or Redis using hibernate.cache.region.factory_class.
 Example:
 properties
-Copy code
+
 hibernate.cache.use_second_level_cache=true
 hibernate.cache.region.factory_class=org.hibernate.cache.ehcache.EhCacheRegionFactory
 
@@ -427,7 +442,7 @@ Answer:
 Defines hierarchical and structured configurations for Spring Boot applications.
 Example:
 yaml
-Copy code
+
 server:
 port: 8080
 spring:
@@ -440,19 +455,21 @@ Answer:
 Use Pageable and Page interfaces.
 Example:
 java
-Copy code
+
 Page<User> users = userRepository.findAll(PageRequest.of(0, 10, Sort.by("name")));
+
 ## Q28: How does Spring Boot handle exception handling in REST APIs?
 Answer:
 Use @ControllerAdvice with @ExceptionHandler.
 Example:
 java
-Copy code
+
 @ControllerAdvice
 public class GlobalExceptionHandler {
 @ExceptionHandler(ResourceNotFoundException.class)
 public ResponseEntity<Object> handleNotFound(ResourceNotFoundException ex) {
 return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
+
 }
 }
 ## Q29: How can you secure a REST API in Spring Boot?
@@ -525,9 +542,10 @@ Method naming convention allows automatic query generation based on method names
 @Query allows custom JPQL or native SQL queries.
 Example:
 java
-Copy code
+
 @Query("SELECT u FROM User u WHERE u.name = :name")
 User findByNameCustom(@Param("name") String name);
+
 ## Q40: How do you handle large data sets in a Spring + Hibernate application?
 Answer:
 Use pagination with Pageable in Spring Data JPA.
@@ -548,10 +566,11 @@ Answer:
 @Component: Automatically detects and registers the bean during component scanning.
 Example:
 java
-Copy code
+
 @Bean
 public MyService myService() {
 return new MyService();
+
 }
 ## Q43: What is the purpose of Spring’s HandlerInterceptor?
 Answer:
@@ -573,7 +592,7 @@ Answer:
 Loads properties from a file into the Spring Environment.
 Example:
 java
-Copy code
+
 @Configuration
 @PropertySource("classpath:application.properties")
 public class AppConfig {
@@ -595,7 +614,7 @@ Use Spring Boot Actuator for health checks, metrics, and environment monitoring.
 Integrate with monitoring tools like Prometheus, Grafana, or ELK Stack.
 Example:
 properties
-Copy code
+
 management.endpoints.web.exposure.include=health, metrics
 ## Q49: How do you test Spring Boot applications?
 Answer:
@@ -609,7 +628,7 @@ Answer:
 Provides features like automatic application restarts and live reload during development.
 Example configuration:
 properties
-Copy code
+
 spring.devtools.restart.enabled=true
 Hibernate Advanced Questions
 ## Q51: What is the purpose of the Criteria API in Hibernate?
@@ -617,12 +636,17 @@ Answer:
 Used to create type-safe and dynamic queries.
 Example:
 java
-Copy code
+
 CriteriaBuilder cb = session.getCriteriaBuilder();
+
 CriteriaQuery<User> cq = cb.createQuery(User.class);
+
 Root<User> root = cq.from(User.class);
+
 cq.select(root).where(cb.equal(root.get("name"), "John"));
+
 List<User> results = session.createQuery(cq).getResultList();
+
 ## Q52: What are Hibernate annotations, and name a few commonly used ones.
 Answer:
 Hibernate annotations provide metadata for mapping Java objects to database tables.
@@ -645,26 +669,30 @@ Uses a versioning field annotated with @Version to detect concurrent updates.
 If the version doesn’t match during update, Hibernate throws an OptimisticLockException.
 Example:
 java
-Copy code
+
 @Version
 private int version;
+
 ## Q55: What is the purpose of @Embeddable and @Embedded in Hibernate?
 Answer:
 @Embeddable: Defines a class whose instances are stored as part of an entity.
 @Embedded: Marks a field of an entity to use an embeddable class.
 Example:
 java
-Copy code
+
 @Embeddable
 public class Address {
 private String city;
+
 private String state;
+
 }
 
 @Entity
 public class User {
 @Embedded
 private Address address;
+
 }
 Spring + Hibernate Integration Advanced Questions
 ## Q56: What is the Open Session in View pattern?
@@ -677,9 +705,10 @@ Answer:
 Extend a repository interface and implement its methods in a custom class.
 Example:
 java
-Copy code
+
 public interface UserRepositoryCustom {
 List<User> findUsersByCustomQuery();
+
 }
 
 public class UserRepositoryImpl implements UserRepositoryCustom {
@@ -698,15 +727,17 @@ Answer:
 Use @EntityListeners with Hibernate Envers or Spring Auditing.
 Example:
 java
-Copy code
+
 @Entity
 @EntityListeners(AuditingEntityListener.class)
 public class User {
 @CreatedDate
 private LocalDateTime createdDate;
 
+
     @LastModifiedDate
     private LocalDateTime lastModifiedDate;
+
 }
 ## Q60: How do you integrate Hibernate Validator with Spring Boot?
 Answer:
@@ -714,12 +745,13 @@ Add Hibernate Validator dependency.
 Use annotations like @NotNull, @Size, @Pattern, etc., on entity fields.
 Example:
 java
-Copy code
+
 @Entity
 public class User {
 @NotNull
 @Size(min = 2, max = 30)
 private String name;
+
 }
 
 
@@ -780,11 +812,12 @@ Dependency Injection (DI)
 Uses XML, annotations, or Java-based configuration to inject dependencies.
 Example:
 java
-Copy code
+
 @Service
 public class UserService {
 @Autowired
 private UserRepository userRepository;
+
 }
 Aspect-Oriented Programming (AOP)
 
@@ -814,11 +847,12 @@ SpringApplication Class
 Bootstraps the application.
 Example:
 java
-Copy code
+
 @SpringBootApplication
 public class Application {
 public static void main(String[] args) {
 SpringApplication.run(Application.class, args);
+
 }
 }
 Externalized Configuration
@@ -868,26 +902,38 @@ Send form data to Spring Boot API.
    Configure Postgres in application.properties:
 
 properties
-Copy code
+
 ## Database Configuration
 spring.datasource.url=jdbc:postgresql://localhost:5432/formdb
+
 spring.datasource.username=postgres
+
 spring.datasource.password=your_password
+
 
 ## JPA Configuration
 spring.jpa.show-sql=true
+
 spring.jpa.hibernate.ddl-auto=update
+
 1.2.2. Model
 Create an entity to represent the form data:
 
 java
-Copy code
+
 package com.example.formapp.model;
 
+
 import jakarta.persistence.*;
+
+
 import jakarta.validation.constraints.Email;
+
+
 import jakarta.validation.constraints.NotBlank;
+
 import jakarta.validation.constraints.Size;
+
 
 @Entity
 public class FormData {
@@ -895,16 +941,20 @@ public class FormData {
 @GeneratedValue(strategy = GenerationType.IDENTITY)
 private Long id;
 
+
     @NotBlank(message = "Name is mandatory")
     @Size(min = 3, message = "Name must be at least 3 characters")
     private String name;
+
 
     @Email(message = "Invalid email address")
     @NotBlank(message = "Email is mandatory")
     private String email;
 
+
     @NotBlank(message = "Message cannot be empty")
     private String message;
+
 
     // Getters and setters
 }
@@ -912,11 +962,14 @@ private Long id;
 Create a repository for database operations:
 
 java
-Copy code
+
 package com.example.formapp.repository;
 
+
 import com.example.formapp.model.FormData;
+
 import org.springframework.data.jpa.repository.JpaRepository;
+
 
 public interface FormDataRepository extends JpaRepository<FormData, Long> {
 }
@@ -924,15 +977,24 @@ public interface FormDataRepository extends JpaRepository<FormData, Long> {
 Expose an API endpoint to handle form submissions:
 
 java
-Copy code
+
 package com.example.formapp.controller;
 
+
 import com.example.formapp.model.FormData;
+
+
 import com.example.formapp.repository.FormDataRepository;
+
+
 import jakarta.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.http.ResponseEntity;
+
 import org.springframework.web.bind.annotation.*;
+
 
 @RestController
 @RequestMapping("/api/form")
@@ -941,23 +1003,31 @@ public class FormController {
     @Autowired
     private FormDataRepository formDataRepository;
 
+
     @PostMapping
     public ResponseEntity<String> submitForm(@Valid @RequestBody FormData formData) {
         formDataRepository.save(formData);
+
         return ResponseEntity.ok("Form submitted successfully!");
+
     }
 }
 1.2.5. Authentication
 Implement basic authentication using Spring Security:
 
 java
-Copy code
+
 package com.example.formapp.config;
 
+
 import org.springframework.context.annotation.Bean;
+
 import org.springframework.context.annotation.Configuration;
+
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+
 import org.springframework.security.web.SecurityFilterChain;
+
 
 @Configuration
 public class SecurityConfig {
@@ -970,13 +1040,15 @@ public class SecurityConfig {
             .requestMatchers("/api/form/**").authenticated()
             .and()
             .httpBasic();
+
         return http.build();
+
     }
 }
 Add a default user for authentication in application.properties:
 
 properties
-Copy code
+
 spring.security.user.name=admin
 spring.security.user.password=password
 2. React Frontend
@@ -984,21 +1056,23 @@ spring.security.user.password=password
    Initialize a React project:
 
 bash
-Copy code
+
 npx create-react-app form-app
 cd form-app
 Install Axios for API calls:
 
 bash
-Copy code
+
 npm install axios
 2.2. Create a Form Component
 Create a FormComponent.js file:
 
 jsx
-Copy code
+
 import React, { useState } from "react";
+
 import axios from "axios";
+
 
 const FormComponent = () => {
 const [formData, setFormData] = useState({
@@ -1007,14 +1081,19 @@ email: "",
 message: "",
 });
 
+
 const [message, setMessage] = useState("");
+
 
 const handleChange = (e) => {
 setFormData({ ...formData, [e.target.name]: e.target.value });
+
 };
+
 
 const handleSubmit = async (e) => {
 e.preventDefault();
+
 try {
 const response = await axios.post(
 "http://localhost:8080/api/form",
@@ -1026,11 +1105,15 @@ password: "password",
 },
 }
 );
+
 setMessage(response.data);
+
 } catch (error) {
 setMessage(error.response.data.message || "Form submission failed.");
+
 }
 };
+
 
 return (
 <div>
@@ -1067,16 +1150,21 @@ onChange={handleChange}
 {message && <p>{message}</p>}
 </div>
 );
+
 };
 
+
 export default FormComponent;
+
 2.3. Integrate and Run
 Replace the App.js content with:
 
 jsx
-Copy code
+
 import React from "react";
+
 import FormComponent from "./FormComponent";
+
 
 function App() {
 return (
@@ -1084,22 +1172,24 @@ return (
 <FormComponent />
 </div>
 );
+
 }
 
 export default App;
+
 Run the React app:
 
 bash
-Copy code
+
 npm start
 3. Running the Application
    Start the Spring Boot application:
    bash
-   Copy code
+   
    mvn spring-boot:run
    Start the React application:
    bash
-   Copy code
+   
    npm start
    Open http://localhost:3000 in your browser, fill out the form, and submit.
 4. Key Features
