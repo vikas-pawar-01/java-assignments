@@ -724,10 +724,11 @@ private String name;
 
 
 
-How JVM Works and Java Internals
+## How JVM Works and Java Internals
+
 The Java Virtual Machine (JVM) is the runtime environment that executes Java bytecode. Here's a breakdown of its internal working:
 
-Key Components of JVM
+## Key Components of JVM
 Classloader Subsystem
 
 Responsible for loading .class files into memory.
@@ -750,21 +751,22 @@ Garbage Collector: Manages memory by reclaiming unused objects.
 Native Interface
 
 Provides interaction between Java code and native libraries using the Java Native Interface (JNI).
-JVM Execution Flow
+
+## JVM Execution Flow
 Compilation: Java source code is compiled into bytecode (.class files) using the Java compiler (javac).
 Class Loading: The classloader subsystem loads the bytecode into memory.
 Verification: The bytecode verifier ensures the code adheres to JVM constraints (e.g., type safety).
 Execution: The execution engine interprets or compiles the bytecode into machine code for the target platform.
-Garbage Collection in JVM
+## Garbage Collection in JVM
 Automatic memory management.
 Garbage collectors:
 Serial GC: Single-threaded.
 Parallel GC: Multi-threaded.
 G1 GC: Region-based for low-latency applications.
-Spring Framework Internal Working
+## Spring Framework Internal Working
 The Spring Framework is based on dependency injection and aspect-oriented programming.
 
-Key Components
+## Key Components
 ApplicationContext
 
 Central interface for accessing Spring's bean container.
@@ -791,15 +793,15 @@ Uses proxies to inject advice into target methods.
 Transaction Management
 
 Provides declarative and programmatic transaction handling.
-Spring Lifecycle
+## Spring Lifecycle
 Bean Definition: Beans are defined in XML, annotations, or Java configurations.
 Container Initialization: Spring container parses bean definitions and initializes beans.
 Dependency Injection: Beans are injected with required dependencies.
 Bean Lifecycle Hooks: Lifecycle methods like @PostConstruct, @PreDestroy, and custom methods are executed.
-Spring Boot Internal Working
+## Spring Boot Internal Working
 Spring Boot simplifies Spring application development by offering default configurations, embedded servers, and auto-configuration.
 
-Key Features of Spring Boot
+## Key Features of Spring Boot
 Auto-Configuration
 
 Automatically configures beans based on classpath dependencies.
@@ -825,12 +827,12 @@ Supports application.properties or application.yml for easy configuration.
 Actuator
 
 Provides health, metrics, and environment information.
-Spring Boot Lifecycle
+## Spring Boot Lifecycle
 Run Application: SpringApplication.run() starts the application.
 Load Configuration: Auto-configuration and externalized configuration files are loaded.
 Bean Initialization: Spring Boot initializes and injects beans.
 Embedded Server: Starts an embedded web server if required.
-Differences Between Spring and Spring Boot
+## Differences Between Spring and Spring Boot
 Feature	Spring Framework	Spring Boot
 Configuration	Requires manual configuration	Auto-configures based on dependencies
 Startup Time	Slower	Faster due to embedded optimizations
@@ -842,7 +844,7 @@ Main Focus	Flexibility and customization	Quick and easy development
 Actuator	Not available by default	Provides monitoring and health checks
 
 
-Steps Overview:
+## Steps Overview:
 Backend: Spring Boot
 
 Create Spring Boot API.
@@ -867,12 +869,12 @@ Send form data to Spring Boot API.
 
 properties
 Copy code
-# Database Configuration
+## Database Configuration
 spring.datasource.url=jdbc:postgresql://localhost:5432/formdb
 spring.datasource.username=postgres
 spring.datasource.password=your_password
 
-# JPA Configuration
+## JPA Configuration
 spring.jpa.show-sql=true
 spring.jpa.hibernate.ddl-auto=update
 1.2.2. Model
